@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../pages/pages_navigate/home_page.dart';
-import '../pages/pages_navigate/prescription_list.dart';
+import '../pages/pages_navigate/bookChapters.dart';
 import '../pages/pages_navigate/symptom_tracker.dart';
 
 // we used the cupertino to create the bottom navigation bar
@@ -26,7 +26,7 @@ class PageConst extends StatelessWidget {
 
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              label: 'Prescription List',
+              label: 'Book Chapters',
             ),
           ],
         ),
@@ -45,7 +45,7 @@ class PageConst extends StatelessWidget {
 
             case 2:
               return CupertinoTabView(builder: (context) {
-                return CupertinoPageScaffold(child: prescripList());
+                return const CupertinoPageScaffold(child: bookChapters());
               });
 //the default case is homepage
             default:

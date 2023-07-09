@@ -45,7 +45,7 @@ class PageConst extends StatelessWidget {
 
             case 2:
               return CupertinoTabView(builder: (context) {
-                return const CupertinoPageScaffold(child: bookChapters());
+                return CupertinoPageScaffold(child: bookChapters());
               });
 //the default case is homepage
             default:

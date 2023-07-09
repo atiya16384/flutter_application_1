@@ -11,7 +11,9 @@ class bookChapters extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(228, 92, 162, 100),
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: const Text("Page 3"),
         actions: [
           IconButton(

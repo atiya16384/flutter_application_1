@@ -22,11 +22,12 @@ class _CreateSymptomTab extends ConsumerState<CreateSymptomTab> {
   final controllerPrescription = TextEditingController();
   //final controllerDate = TextEditingController();
 
-//connect to firebase database using the method
+  //layout for how we display it onto the screen
+  // Widget buildUser(User user) => ListTile(
+  //       subtitle: Text(user.symptom + user.prescription),
+  //       //title: Text(user.prescription),
+  //     );
 
-// we create a stream to read the relevant info from firebase.
-
-//we create info symptom
   Future createInfoSymptom(User user) async {
     final docUser = FirebaseFirestore.instance.collection('users').doc();
     user.id = docUser.id;
@@ -35,30 +36,48 @@ class _CreateSymptomTab extends ConsumerState<CreateSymptomTab> {
     await docUser.set(json);
   }
 
-//once the info has been added to firebase, we read the relevant information
-  //read the info sysmptom from firebase to display on app screen
-  Stream<List<User>> readInfoSymptom() => FirebaseFirestore.instance
-      .collection('users')
-      .snapshots()
-      .map((snapshot) =>
-          //what is doc
-          snapshot.docs.map(((doc) => User.fromJson(doc.data()))).toList());
-
   InputDecoration design(String label) => InputDecoration(
         labelText: label,
         border: const OutlineInputBorder(),
       );
 
-  Widget buildUser(User user) => ListTile(
-        title: CircleAvatar(child: Text(user.symptom)),
-        //title: Text(user.prescription),
-        subtitle: Text(user.prescription),
-      );
+  //document IDs
+
+  // List<String> listIDs = [];
+
+  // Future getlistIDs() async {
+  //   await FirebaseFirestore.instance.collection('users').get().then(
+  //         (snapshot) => snapshot.docs.forEach((dataItem) {
+  //           print(dataItem.reference);
+  //           listIDs.add(dataItem.reference.id);
+  //         }),
+  //       );
+  // }
+
+  // @override
+  // void initState() {
+  //   getlistIDs();
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
+//we create info symptom
+
+    //once the info has been added to firebase, we read the relevant information
+    //read the info sysmptom from firebase to display on app screen
+
+    // Stream<List<User>> readUsers() => FirebaseFirestore.instance
+    //     .collection('users')
+    //     .snapshots()
+    //     .map((snapshot) =>
+    //         //what is doc
+    //         //we get the data from the json file and convert to list
+    //         snapshot.docs.map(((doc) => User.fromJson(doc.data()))).toList());
+
     return Scaffold(
       appBar: AppBar(
+          title: const Text('Tracker'),
           backgroundColor: const Color.fromRGBO(228, 92, 162, 100),
           leading: IconButton(
             onPressed: () {
@@ -150,30 +169,67 @@ class _CreateSymptomTab extends ConsumerState<CreateSymptomTab> {
                     //    todaysdate: DateTime.parse(controllerDate),
                   );
                   createInfoSymptom(user);
-                  Navigator.pop(context);
+
+                  //      Navigator.pop(context);
+
+                  // StreamBuilder<List<User>>(
+                  //     stream: readUsers(),
+                  //     builder: (context, snapshot) {
+                  //       //we need to handle errors
+                  //       // we check if we have an error in getting data
+                  //       //getting an eror in capturing the data from firebase
+                  //       if (snapshot.hasError) {
+                  //         // getting an error in capturing the daa
+                  //         return const Text(
+                  //             'something went wrong!' /* ${snapshot.error}*/);
+                  //         //this elif needs to produce output onto screen
+                  //       } else if (snapshot.hasData) {
+                  //         final users = snapshot.data!;
+                  //         //may need to display a builder here
+                  //         return ListView(
+                  //           children: users.map(buildUser).toList(),
+                  //         );
+                  //       } else {
+                  //         return const Center(
+                  //             child: CircularProgressIndicator());
+                  //       }
+                  //     });
+                  // Navigator.pop(context);
                 },
               ),
+              // Expanded(
+              //     child: FutureBuilder(
+              //         future: getlistIDs(),
+              //         builder: (context, snapshot) {
+              //           return ListView.builder(
+              //               itemCount: listIDs.length,
+              //               itemBuilder: (context, index) {
+              //                 return ListTile(
+              //                   title: Text(listIDs[index]),
+              //                 );
+              //               });
+              //         })),
               //read info from the firebase
-              StreamBuilder<List<User>>(
-                  stream: readInfoSymptom(),
-                  builder: (context, snapshot) {
-                    //we need to handle errors
-                    // we check if we have an error in getting data
-                    //getting an eror in capturing the data from firebase
-                    if (snapshot.hasError) {
-                      // getting an error in capturing the daa
-                      return const Text(
-                          'something went wrong!' /* ${snapshot.error}*/);
-                    } else if (snapshot.hasData) {
-                      final users = snapshot.data!;
+              // StreamBuilder<List<User>>(
+              //     stream: readInfoSymptom(),
+              //     builder: (context, snapshot) {
+              //       //we need to handle errors
+              //       // we check if we have an error in getting data
+              //       //getting an eror in capturing the data from firebase
+              //       if (snapshot.hasError) {
+              //         // getting an error in capturing the daa
+              //         return const Text(
+              //             'something went wrong!' /* ${snapshot.error}*/);
+              //       } else if (snapshot.hasData) {
+              //         final users = snapshot.data!;
 
-                      return ListView(
-                        children: users.map(buildUser).toList(),
-                      );
-                    } else {
-                      return const Center(child: CircularProgressIndicator());
-                    }
-                  }),
+              //         return ListView(
+              //           children: users.map(buildUser).toList(),
+              //         );
+              //       } else {
+              //         return const Center(child: CircularProgressIndicator());
+              //       }
+              //     }),
             ],
           ),
         ),

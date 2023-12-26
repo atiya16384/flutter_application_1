@@ -20,7 +20,6 @@ class trackSymp extends StatefulWidget {
 //   getlistIDs();
 //   super.initState();
 // }
-
 class _trackSympState extends State<trackSymp> {
   void signOut() {
     FirebaseAuth.instance.signOut();
@@ -68,7 +67,8 @@ class _trackSympState extends State<trackSymp> {
           //change
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterFloat,
     );
   }
 }

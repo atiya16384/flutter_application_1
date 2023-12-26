@@ -33,7 +33,6 @@ class _bookChaptersState extends State<bookChapters> {
             )
           ],
         ),
-        drawer: const NavigationDrawer1(),
         body: PageView(children: [
           //  controller: pageController,
 
@@ -45,39 +44,4 @@ class _bookChaptersState extends State<bookChapters> {
               color: Colors.green, child: const Center(child: Text('Page 3'))),
         ]));
   }
-}
-
-class NavigationDrawer1 extends StatelessWidget {
-  const NavigationDrawer1({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) => Drawer(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Header(context),
-              Items(context),
-            ],
-          ),
-        ),
-      );
-
-  Widget Header(BuildContext context) => Container(
-          padding: EdgeInsets.only(
-        top: MediaQuery.of(context).padding.top,
-      ));
-
-  Widget Items(BuildContext context) => Column(
-        children: [
-          ListTile(
-              leading: const Icon(Icons.home_outlined),
-              title: const Text('Chapter 1'),
-              onTap: () {}),
-          ListTile(
-              leading: const Icon(Icons.home_outlined),
-              title: const Text('Chapter 2'),
-              onTap: () {}),
-        ],
-      );
 }

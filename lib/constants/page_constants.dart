@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/pages_navigate/Settings.dart';
+import 'package:flutter_application_1/pages/pages_navigate/report.dart';
 
 import '../pages/pages_navigate/home_page.dart';
 import '../pages/pages_navigate/bookChapters.dart';
@@ -20,13 +22,23 @@ class PageConst extends StatelessWidget {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Icon(Icons.track_changes),
               label: 'Symptom Tracker',
             ),
 
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'Book Chapters',
+            ),
+
+            BottomNavigationBarItem(
+              icon: Icon(Icons.report),
+              label: 'Report',
+            ),
+
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: 'Settings',
             ),
           ],
         ),
@@ -46,6 +58,16 @@ class PageConst extends StatelessWidget {
             case 2:
               return CupertinoTabView(builder: (context) {
                 return CupertinoPageScaffold(child: bookChapters());
+              });
+
+            case 3:
+              return CupertinoTabView(builder: (context) {
+                return CupertinoPageScaffold(child: ReportPage());
+              });
+
+            case 4:
+              return CupertinoTabView(builder: (context) {
+                return CupertinoPageScaffold(child: Settings());
               });
 //the default case is homepage
             default:

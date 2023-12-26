@@ -42,6 +42,9 @@ dependencies:
   custom_navigator: ^0.3.0
   calendar_view: ^1.0.3
   google_fonts: ^2.1.0 
+  intl: ^0.17.0   
+  flutter_svg: ^2.0.5
+  flutter_animated_dialog: ^2.0.1
   
   # Firebase Database
   cloud_firestore: ^4.8.2

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
 import 'button_tab.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -20,20 +21,32 @@ class CreateSymptomTab extends ConsumerStatefulWidget {
 class _CreateSymptomTab extends ConsumerState<CreateSymptomTab> {
   final controllerSymptom = TextEditingController();
   final controllerPrescription = TextEditingController();
-  //final controllerDate = TextEditingController();
+  DateTime selectedDate = DateTime.now();
 
-  //layout for how we display it onto the screen
-  // Widget buildUser(User user) => ListTile(
-  //       subtitle: Text(user.symptom + user.prescription),
-  //       //title: Text(user.prescription),
-  //     );
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2101),
+    );
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
 
   Future createInfoSymptom(User user) async {
-    final docUser = FirebaseFirestore.instance.collection('users').doc();
-    user.id = docUser.id;
+    try {
+      final docUser = FirebaseFirestore.instance.collection('users').doc();
+      user.id = docUser.id;
 
-    final json = user.toJson();
-    await docUser.set(json);
+      final json = user.toJson();
+      await docUser.set(json);
+    } catch (e) {
+      print('Error adding user: $e');
+    }
   }
 
   InputDecoration design(String label) => InputDecoration(
@@ -67,13 +80,13 @@ class _CreateSymptomTab extends ConsumerState<CreateSymptomTab> {
     //once the info has been added to firebase, we read the relevant information
     //read the info sysmptom from firebase to display on app screen
 
-    // Stream<List<User>> readUsers() => FirebaseFirestore.instance
-    //     .collection('users')
-    //     .snapshots()
-    //     .map((snapshot) =>
-    //         //what is doc
-    //         //we get the data from the json file and convert to list
-    //         snapshot.docs.map(((doc) => User.fromJson(doc.data()))).toList());
+    Stream<List<User>> readUsers() => FirebaseFirestore.instance
+        .collection('users')
+        .snapshots()
+        .map((snapshot) =>
+            //what is doc
+            //we get the data from the json file and convert to list
+            snapshot.docs.map(((doc) => User.fromJson(doc.data()))).toList());
 
     return Scaffold(
       appBar: AppBar(
@@ -139,6 +152,14 @@ class _CreateSymptomTab extends ConsumerState<CreateSymptomTab> {
                 decoration: design('Prescription'),
               ),
               const SizedBox(height: 24),
+              ListTile(
+                title: Text(
+                  "Selected date: ${DateFormat('yyyy-MM-dd').format(selectedDate)}",
+                ),
+                trailing: Icon(Icons.calendar_today),
+                onTap: () => _selectDate(context),
+              ),
+              const SizedBox(height: 24),
 //if condition evaluates to true, the consequent
               // DateTimeField(
               //   controller: controllerDate,
@@ -166,7 +187,7 @@ class _CreateSymptomTab extends ConsumerState<CreateSymptomTab> {
                   final user = User(
                     symptom: controllerSymptom.text,
                     prescription: controllerPrescription.text,
-                    //    todaysdate: DateTime.parse(controllerDate),
+                    todaysdate: selectedDate,
                   );
                   createInfoSymptom(user);
 
@@ -245,27 +266,29 @@ class User {
   late String id;
   late final String symptom;
   late final String prescription;
-//  late final int todaysdate;
+  late final DateTime todaysdate; // Add a DateTime field
 
   User({
     this.id = ' ',
     required this.symptom,
     required this.prescription,
-    /* required this.todaysdate*/
+    required this.todaysdate, // Add required date parameter
   });
 
-  //we create a map of key-value pairs
+  // Modify toJson to include the date
   Map<String, dynamic> toJson() => {
         'id': id,
         'symptom': symptom,
         'prescription': prescription,
-        //    'todaysdate': todaysdate,
+        'todaysdate': todaysdate, // Save date as Timestamp
       };
 
+  // Modify fromJson to include the date
   static User fromJson(Map<String, dynamic> json) => User(
         id: json['id'],
         symptom: json['symptom'],
         prescription: json['prescription'],
-//birthday: (json['birthday'] as Timestamp).toDate(),
+        todaysdate: (json['todaysdate'] as Timestamp)
+            .toDate(), // Convert Timestamp to DateTime
       );
 }

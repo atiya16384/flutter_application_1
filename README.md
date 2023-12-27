@@ -1,11 +1,22 @@
-# flutter_application_1
+# Flutter Application
 
-A new Flutter project called menopause unzipped. Developed the code from scratch and is the first app I've developed. 
+This is a Flutter application that provides a home page with features such as current date and a specific UI.
 
-The app will include features such as a symptom tracker, chapters from the writers book etc. 
+## Getting Started
 
-Used firebase as part of the authentication and database.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
+### Prerequisites
 
+You need to have Flutter and Dart installed on your machine. You can download them from here:
+
+- [Flutter](https://flutter.dev/docs/get-started/install)
+- [Dart](https://dart.dev/get-dart)
+
+### Installing
+
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/your-repo-name.git
 
 

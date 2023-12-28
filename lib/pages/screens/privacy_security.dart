@@ -6,7 +6,7 @@ class PrivacySecurityScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Privacy & Security'),
-        backgroundColor: Colors.deepPurple, // Or any color that fits your theme
+        backgroundColor: Colors.deepPurple, // Or any color that fits theme
       ),
       body: ListView(
         children: ListTile.divideTiles(
@@ -14,8 +14,7 @@ class PrivacySecurityScreen extends StatelessWidget {
           tiles: [
             ListTile(
               leading: const Icon(Icons.lock_outline,
-                  color:
-                      Colors.deepPurple), // Or any color that fits your theme
+                  color: Colors.deepPurple), // Or any color that fits theme
               title: const Text('Change Password'),
               onTap: () {
                 // Navigate to change password screen
@@ -58,7 +57,7 @@ class PrivacySecurityScreen extends StatelessWidget {
                 // Update the privacy setting
               },
             ),
-            // Add more options as needed
+            // Add more options
           ],
         ).toList(),
       ),

@@ -115,7 +115,7 @@ class _BookChaptersState extends State<BookChapters> {
                 const SizedBox(height: 20),
                 Expanded(
                   child: Container(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       color: Colors.white.withOpacity(0.9),
                       borderRadius: BorderRadius.circular(10.0),
@@ -128,7 +128,8 @@ class _BookChaptersState extends State<BookChapters> {
                           )
                         : Center(
                             child: Text('Please select a chapter',
-                                style: TextStyle(color: Colors.grey[700]))),
+                                style: TextStyle(
+                                    color: Colors.pink[700], fontSize: 24))),
                   ),
                 ),
               ],

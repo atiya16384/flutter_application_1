@@ -74,7 +74,10 @@ class _trackSympState extends State<trackSymp> {
               color: Theme.of(context).colorScheme.secondary),
           title: Text(user.symptom ?? 'No symptom',
               style: const TextStyle(fontWeight: FontWeight.bold)),
-          subtitle: Text(user.prescription ?? 'No prescription'),
+          subtitle: Text(
+            'Prescription: ${user.prescription ?? 'No prescription'}\n'
+            'Severity: ${user.symptomSeverity ?? 'Not specified'}', // Display symptom severity
+          ),
           trailing: Wrap(
             spacing: 12, // space between two icons
             children: <Widget>[
@@ -84,7 +87,6 @@ class _trackSympState extends State<trackSymp> {
               IconButton(
                 icon: Icon(Icons.close),
                 onPressed: () => deleteUser(user.id),
-                // Call the deleteUser function when the button is pressed
               ),
             ],
           ),

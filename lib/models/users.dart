@@ -6,12 +6,14 @@ class User {
   final String? symptom; // Make symptom nullable
   final String? prescription; // Make prescription nullable
   final DateTime? todaysdate; // Already nullable
+  final int? symptomSeverity; //symptom severity
 
   User({
     required this.id, // id is required and should not have a default value
     this.symptom, // symptom is nullable, so it's not required
     this.prescription, // prescription is nullable, so it's not required
     this.todaysdate, // todaysdate is nullable, so it's not required
+    this.symptomSeverity,
   });
 
   Map<String, dynamic> toJson() => {
@@ -22,6 +24,7 @@ class User {
             prescription, // No need to check for null as Firestore supports null values
         'todaysdate':
             todaysdate != null ? Timestamp.fromDate(todaysdate!) : null,
+        'symptomSeverity': symptomSeverity,
       };
 
   static User fromJson(Map<String, dynamic> json) => User(
@@ -32,5 +35,6 @@ class User {
         todaysdate: json['todaysdate'] != null
             ? (json['todaysdate'] as Timestamp).toDate()
             : null,
+        symptomSeverity: json['symptomSeverity'] as int?,
       );
 }

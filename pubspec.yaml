@@ -46,8 +46,11 @@ dependencies:
   flutter_svg: ^2.0.5
   flutter_animated_dialog: ^2.0.1
   
+  
   # Firebase Database
   cloud_firestore: ^4.8.2
+  flutter_dropdown_search: ^0.0.4
+
 
 dev_dependencies:
   flutter_test:

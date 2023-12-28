@@ -1,6 +1,6 @@
 # Flutter Application
 
-This is a Flutter application that provides a home page with features such as current date and a specific UI.
+This is a Flutter application that provides a home page with features such as symptom tracker, report generator, chapters from the writers book integrated to the app etc.
 
 ## Getting Started
 

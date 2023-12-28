@@ -8,14 +8,18 @@ class ReportPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
+
     return Scaffold(
       backgroundColor: Color.fromRGBO(228, 92, 162, 100),
       appBar: AppBar(
+        title: const Text('Report Summary'),
         backgroundColor: Colors.black,
         actions: [
           IconButton(
             onPressed: signOut,
             icon: const Icon(Icons.logout),
+            tooltip: 'Sign Out',
           ),
         ],
       ),
@@ -25,46 +29,40 @@ class ReportPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Report Summary',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              SizedBox(height: 16),
               Card(
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
                 elevation: 4.0,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
                         'Report Details',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color: theme
+                              .primaryColor, // Use the theme's primary color
                         ),
                       ),
                       SizedBox(height: 10),
-                      // Here you could add more widgets that display the content of the report
-                      Text(
-                        'This is where the details of the report will be displayed.',
+                      const Text(
+                        'This is where the details of the report will be displayed. Include all relevant information and data here.',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.black54,
+                          color: Colors.black87,
                         ),
                       ),
-                      // Add more text widgets or any other type of widget to display your report data
+                      // Add more content widgets as needed
                     ],
                   ),
                 ),
               ),
-              SizedBox(height: 20),
-              // If you have more sections, continue adding them here
+              // Add more cards or content widgets for additional sections of the report
             ],
           ),
         ),

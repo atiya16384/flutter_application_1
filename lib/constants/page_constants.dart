@@ -57,7 +57,7 @@ class PageConst extends StatelessWidget {
 
             case 2:
               return CupertinoTabView(builder: (context) {
-                return CupertinoPageScaffold(child: bookChapters());
+                return CupertinoPageScaffold(child: BookChapters());
               });
 
             case 3:

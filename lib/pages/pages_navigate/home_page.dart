@@ -1,8 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/pages_navigate/symptom_tracker.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import 'Contacts.dart';
+import 'Help.dart';
 
 class HomePage extends StatelessWidget {
   void signOut() {
@@ -114,13 +118,37 @@ class NavigationDrawer extends StatelessWidget {
               ),
               ListTile(
                 leading: const Icon(Icons.home_outlined),
-                title: const Text('Home'),
-                onTap: () {},
+                title: const Text('Symptom Tracker'),
+                onTap: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => trackSymp()),
+                  ),
+                },
               ),
               ListTile(
                 leading: const Icon(Icons.notifications_outlined),
                 title: const Text('Notifications'),
                 onTap: () {},
+              ),
+              ListTile(
+                  leading: const Icon(Icons.contacts),
+                  title: const Text('Contacts'),
+                  onTap: () => {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Contacts()),
+                        ),
+                      }),
+              ListTile(
+                leading: const Icon(Icons.help),
+                title: const Text('Further Help'),
+                onTap: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Help()),
+                  ),
+                },
               ),
               // Add more ListTile widgets as needed
             ],

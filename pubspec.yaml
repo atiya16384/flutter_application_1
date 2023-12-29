@@ -50,6 +50,7 @@ dependencies:
   # Firebase Database
   cloud_firestore: ^4.8.2
   flutter_dropdown_search: ^0.0.4
+  url_launcher: ^6.1.11
 
 
 dev_dependencies:

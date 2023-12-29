@@ -6,7 +6,6 @@ import 'package:flutter_application_1/components/square_signature.dart';
 import 'package:flutter_application_1/pages/pages_initial/reset_password_page.dart';
 
 import '../../components/button.dart';
-import '../../components/square_tile.dart';
 import '../../components/text_field.dart';
 
 //changes its properties during run time

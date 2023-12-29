@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -22,63 +23,61 @@ class Contacts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Contact Us'),
-        backgroundColor: Colors.deepPurple,
+        title: Text('Contact Us'),
+        backgroundColor: Colors.black, // Updated theme color
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            ListTile(
-              title: Text('Individual Support',
-                  style: TextStyle(color: Colors.deepPurple.shade800)),
-              leading: const Icon(Icons.person, color: Colors.deepPurple),
-              onTap: () => launchUrl(emailLaunchUri),
-            ),
-            ListTile(
-              title: Text('Workplace Training',
-                  style: TextStyle(color: Colors.deepPurple.shade800)),
-              leading: const Icon(Icons.work, color: Colors.deepPurple),
-              onTap: () => launchUrl(emailLaunchUri),
-            ),
-            ListTile(
-              title: Text('Workshops & Retreats',
-                  style: TextStyle(color: Colors.deepPurple.shade800)),
-              leading:
-                  const Icon(Icons.nature_people, color: Colors.deepPurple),
-              onTap: () => launchUrl(emailLaunchUri),
-            ),
-            ListTile(
-              title: Text('Other Queries',
-                  style: TextStyle(color: Colors.deepPurple.shade800)),
-              leading: const Icon(Icons.more, color: Colors.deepPurple),
-              onTap: () => launchUrl(emailLaunchUri),
-            ),
-            const Divider(color: Colors.deepPurpleAccent),
-            ListTile(
-              title: Text('Phone',
-                  style: TextStyle(color: Colors.deepPurple.shade800)),
-              leading: const Icon(Icons.phone, color: Colors.deepPurple),
-              onTap: () async {
-                final Uri phoneUri = Uri(scheme: 'tel', path: phoneNumber);
-                if (await canLaunchUrl(phoneUri)) {
-                  await launchUrl(phoneUri);
-                } else {
-                  // Can't launch the phone Uri, handle error.
-                }
-              },
-            ),
-            ListTile(
-              title: Text('Email',
-                  style: TextStyle(color: Colors.deepPurple.shade800)),
-              leading: const Icon(Icons.email, color: Colors.deepPurple),
-              onTap: () => launchUrl(emailLaunchUri),
-            ),
+            _buildContactTile(
+                'Individual Support', Icons.person, emailLaunchUri),
+            _buildContactTile('Workplace Training', Icons.work, emailLaunchUri),
+            _buildContactTile(
+                'Workshops & Retreats', Icons.nature_people, emailLaunchUri),
+            _buildContactTile('Other Queries', Icons.more, emailLaunchUri),
+            const Divider(color: Colors.grey),
+            _buildPhoneTile('Phone', Icons.phone, phoneNumber),
+            _buildEmailTile('Email', Icons.email, emailLaunchUri),
           ],
         ),
       ),
-      backgroundColor: Colors.deepPurple[50],
+      backgroundColor: Colors.white, // Updated theme color
+    );
+  }
+
+  ListTile _buildContactTile(String title, IconData icon, Uri launchUri) {
+    return ListTile(
+      title: Text(title,
+          style: TextStyle(color: Colors.black)), // Updated text color
+      leading: Icon(icon, color: Colors.pink), // Updated icon color
+      onTap: () => launchUrl(launchUri),
+    );
+  }
+
+  ListTile _buildPhoneTile(String title, IconData icon, String phoneNumber) {
+    return ListTile(
+      title: Text(title,
+          style: TextStyle(color: Colors.black)), // Updated text color
+      leading: Icon(icon, color: Colors.pink), // Updated icon color
+      onTap: () async {
+        final Uri phoneUri = Uri(scheme: 'tel', path: phoneNumber);
+        if (await canLaunchUrl(phoneUri)) {
+          await launchUrl(phoneUri);
+        } else {
+          // Handle error
+        }
+      },
+    );
+  }
+
+  ListTile _buildEmailTile(String title, IconData icon, Uri launchUri) {
+    return ListTile(
+      title: Text(title,
+          style: const TextStyle(color: Colors.black)), // Updated text color
+      leading: Icon(icon, color: Colors.pink), // Updated icon color
+      onTap: () => launchUrl(launchUri),
     );
   }
 }

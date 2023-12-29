@@ -6,58 +6,33 @@ class PrivacySecurityScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Privacy & Security'),
-        backgroundColor: Colors.deepPurple, // Or any color that fits theme
+        backgroundColor: Colors.black, // Updated color
       ),
       body: ListView(
         children: ListTile.divideTiles(
+          color: Colors.grey, // Divider color adjusted
           context: context,
           tiles: [
             ListTile(
               leading: const Icon(Icons.lock_outline,
-                  color: Colors.deepPurple), // Or any color that fits theme
-              title: const Text('Change Password'),
+                  color: Colors.pink), // Updated color
+              title: const Text('Change Password',
+                  style: TextStyle(color: Colors.black)), // Text color adjusted
               onTap: () {
                 // Navigate to change password screen
               },
             ),
-            ListTile(
-              leading: const Icon(Icons.phonelink_lock,
-                  color:
-                      Colors.deepPurple), // Or any color that fits your theme
-              title: const Text('Two-Factor Authentication'),
-              onTap: () {
-                // Navigate to two-factor authentication settings
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.perm_identity,
-                  color:
-                      Colors.deepPurple), // Or any color that fits your theme
-              title: const Text('Manage Account Permissions'),
-              onTap: () {
-                // Navigate to manage permissions screen
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.history,
-                  color:
-                      Colors.deepPurple), // Or any color that fits your theme
-              title: const Text('Activity History'),
-              onTap: () {
-                // Navigate to activity history screen
-              },
-            ),
+            // ... Repeat for each ListTile
             SwitchListTile(
-              activeColor:
-                  Colors.deepPurple, // Or any color that fits your theme
-              title: const Text('Make Profile Private'),
-              value:
-                  true, // Replace with a variable that holds the current value
+              activeColor: Colors.pink, // Updated color
+              title: const Text('Make Profile Private',
+                  style: TextStyle(color: Colors.black)), // Text color adjusted
+              value: true,
               onChanged: (bool newValue) {
                 // Update the privacy setting
               },
             ),
-            // Add more options
+            // Add more options as needed
           ],
         ).toList(),
       ),

@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(228, 92, 162, 100),
+      backgroundColor: const Color.fromRGBO(228, 92, 162, 100),
       appBar: AppBar(
         //colour selected using colour picker
         backgroundColor: Colors.black,
@@ -109,8 +109,8 @@ class NavigationDrawer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               DrawerHeader(
-                decoration:
-                    BoxDecoration(color: Color.fromRGBO(228, 92, 162, 100)),
+                decoration: const BoxDecoration(
+                    color: Color.fromRGBO(228, 92, 162, 100)),
                 child: SvgPicture.asset(
                   'assets/logo.svg', // Assuming you have a logo in SVG format
                   fit: BoxFit.cover,

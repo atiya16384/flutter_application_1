@@ -1,53 +1,67 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Help extends StatelessWidget {
-  // Define the contact methods
   final Uri nhsUri = Uri.parse('https://www.nhs.uk/conditions/menopause/');
-  final String emergencyNumber = '999'; // Use the appropriate emergency number
+  final String emergencyNumber = '999';
 
   @override
-  Widget build(
-    BuildContext context,
-  ) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Help & Support'),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.black,
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
           ListTile(
-            title: const Text('NHS Menopause Guide'),
-            subtitle: const Text('Comprehensive information on menopause'),
-            leading: const Icon(Icons.library_books, color: Colors.deepPurple),
+            tileColor: Colors.pink.shade50,
+            title: const Text(
+              'NHS Menopause Guide',
+              style: TextStyle(color: Colors.black),
+            ),
+            subtitle: Text(
+              'Comprehensive information on menopause',
+              style: TextStyle(color: Colors.grey.shade600),
+            ),
+            leading: Icon(Icons.library_books, color: Colors.pink.shade300),
             onTap: () => _launchUrl(context, nhsUri),
           ),
           ListTile(
-            title: const Text('Emergency Services'),
-            subtitle:
-                const Text('Contact in case of immediate health emergency'),
-            leading: const Icon(Icons.local_hospital, color: Colors.deepPurple),
+            tileColor: Colors.pink.shade50,
+            title: Text(
+              'Emergency Services',
+              style: TextStyle(color: Colors.black),
+            ),
+            subtitle: Text(
+              'Contact in case of immediate health emergency',
+              style: TextStyle(color: Colors.grey.shade600),
+            ),
+            leading: Icon(Icons.local_hospital, color: Colors.pink.shade300),
             onTap: () => _makePhoneCall(context, emergencyNumber),
           ),
           ListTile(
-            title: const Text('Support Networks'),
-            subtitle: const Text('Find support groups and communities'),
-            leading: const Icon(Icons.people, color: Colors.deepPurple),
+            tileColor: Colors.pink.shade50,
+            title: Text(
+              'Support Networks',
+              style: TextStyle(color: Colors.black),
+            ),
+            subtitle: Text(
+              'Find support groups and communities',
+              style: TextStyle(color: Colors.grey.shade600),
+            ),
+            leading: Icon(Icons.people, color: Colors.pink.shade300),
             onTap: () {
               // Navigate to support networks page or perform another action
             },
           ),
-          // ... Add more helpful resources and contacts as needed
         ],
       ),
+      backgroundColor: Colors.white,
     );
   }
 
-  // Helper method to launch URLs
   void _launchUrl(BuildContext context, Uri url) async {
     if (!await launchUrl(url)) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -56,7 +70,6 @@ class Help extends StatelessWidget {
     }
   }
 
-  // Helper method to make phone calls
   void _makePhoneCall(BuildContext context, String phoneNumber) async {
     final Uri callUri = Uri(scheme: 'tel', path: phoneNumber);
     if (!await launchUrl(callUri)) {

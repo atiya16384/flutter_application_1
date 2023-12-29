@@ -6,60 +6,84 @@ class HelpFeedbackScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Help & Feedback'),
-        backgroundColor: Colors.deepPurple, // Or any color that fits your theme
+        backgroundColor: Colors.black, // Updated color
       ),
       body: ListView(
         padding: const EdgeInsets.all(8.0),
         children: [
           Card(
+            color: Colors.pink.shade100, // Updated color
             child: ListTile(
               leading: const Icon(Icons.question_answer,
-                  color:
-                      Colors.deepPurple), // Or any color that fits your theme
-              title: const Text('FAQs'),
-              subtitle: const Text('Frequently Asked Questions'),
+                  color: Colors.white), // Updated color
+              title: const Text(
+                'FAQs',
+                style: TextStyle(color: Colors.black), // Updated color
+              ),
+              subtitle: const Text(
+                'Frequently Asked Questions',
+                style: TextStyle(color: Colors.grey), // Updated color
+              ),
               onTap: () {
-                // Navigate to FAQ page
+                // TODO: Navigate to the FAQs page
               },
             ),
           ),
           Card(
+            color: Colors.pink.shade100, // Updated color
             child: ListTile(
-              leading: const Icon(Icons.mail,
-                  color:
-                      Colors.deepPurple), // Or any color that fits your theme
-              title: const Text('Contact Support'),
-              subtitle: const Text('Get in touch with our support team'),
+              leading:
+                  const Icon(Icons.mail, color: Colors.white), // Updated color
+              title: const Text(
+                'Contact Support',
+                style: TextStyle(color: Colors.black), // Updated color
+              ),
+              subtitle: const Text(
+                'Get in touch with our support team',
+                style: TextStyle(color: Colors.grey), // Updated color
+              ),
               onTap: () {
-                // Implement contact support action, like opening email or a contact form
+                // TODO: Implement contact support action
               },
             ),
           ),
           Card(
+            color: Colors.pink.shade100, // Updated color
             child: ListTile(
               leading: const Icon(Icons.feedback,
-                  color:
-                      Colors.deepPurple), // Or any color that fits your theme
-              title: const Text('Give Feedback'),
-              subtitle: const Text('Tell us about your experience'),
+                  color: Colors.white), // Updated color
+              title: const Text(
+                'Give Feedback',
+                style: TextStyle(color: Colors.black), // Updated color
+              ),
+              subtitle: const Text(
+                'Tell us about your experience',
+                style: TextStyle(color: Colors.grey), // Updated color
+              ),
               onTap: () {
-                // Navigate to feedback form page
+                // TODO: Navigate to the feedback form page
               },
             ),
           ),
           Card(
+            color: Colors.pink.shade100, // Updated color
             child: ListTile(
               leading: const Icon(Icons.book_online,
-                  color:
-                      Colors.deepPurple), // Or any color that fits your theme
-              title: const Text('User Guide'),
-              subtitle: const Text('Learn how to use the app'),
+                  color: Colors.white), // Updated color
+              title: const Text(
+                'User Guide',
+                style: TextStyle(color: Colors.black), // Updated color
+              ),
+              subtitle: const Text(
+                'Learn how to use the app',
+                style: TextStyle(color: Colors.grey), // Updated color
+              ),
               onTap: () {
-                // Navigate to User Guide page
+                // TODO: Navigate to the User Guide page
               },
             ),
           ),
-          // You can add more options as required
+          // Add more options as required
         ],
       ),
     );

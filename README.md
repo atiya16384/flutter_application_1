@@ -2,6 +2,7 @@
 
 This is a Flutter application that provides a home page with features such as symptom tracker, report generator, chapters from the writers book integrated to the app etc. Completed all of the front end for the project. Created the UI/UX design. The features for symptom tracker, report generator, chapters from writers book work optimally. Used firebase as part of the authentication. Additonally, used firebase database to store and retrieve data as necessary to the app. The different pages include homepage, settings page, report page, symptom tracker page, chapters page. There is a draw on the homepage, that gives the user access to contacts, extra help, symptom tracker and notifications. 
 
+I completed this project in the span of 2-3 months, in my 2nd year of university as part of an techincal consultant internship.
 
 What needs to be worked on: Some of the back-end for settings has not been completed ,notifications feature needs to be worked on, app logo needs to be resized to appropriate size.
 
